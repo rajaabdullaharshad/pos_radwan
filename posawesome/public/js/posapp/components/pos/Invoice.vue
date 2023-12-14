@@ -1135,6 +1135,7 @@ export default {
       doc.posa_delivery_charges = this.selcted_delivery_charges.name;
       doc.posa_delivery_charges_rate = this.delivery_charges_rate || 0;
       doc.posting_date = this.posting_date;
+      doc.sales_person=this.selectedSalesperson
       return doc;
     },
 
@@ -1183,10 +1184,13 @@ export default {
 
     update_invoice(doc) {
       const vm = this;
+      console.log("phla",doc);
       frappe.call({
         method: 'posawesome.posawesome.api.posapp.update_invoice',
         args: {
           data: doc,
+         
+
         },
         async: false,
         callback: function (r) {
